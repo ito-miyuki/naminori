@@ -60,41 +60,41 @@ export default function SignUp() {
     }
 
     return (
-        <>
-            <h1>新規会員登録</h1>
+        <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
+            <h1 className="text-2xl font-bold mb-6 text-center">新規会員登録</h1>
             <form onSubmit={handleSubmit}>
-                <div>
+                <div className="mb-4">
                     <label htmlFor="lastName">姓</label>
-                    <input id="lastName" type="text" value={form.lastName} onChange={handleChange}/>
+                    <input id="lastName" type="text" value={form.lastName} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
-                <div>
+                <div className="mb-4">
                     <label htmlFor="firstName">名</label>
-                    <input id="firstName" type="text" value={form.firstName} onChange={handleChange}/>
+                    <input id="firstName" type="text" value={form.firstName} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
                 </div>
-                <div>
+                <div className="mb-4">
                     <label htmlFor="email">メールアドレス（ログインID）</label>
-                    <input id="email" type="text" value={form.email} onChange={handleChange} />
+                    <input id="email" type="text" value={form.email} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
-                <div>
+                <div className="mb-4">
                     <label htmlFor="phone">電話番号（ハイフンなしの半角英数）</label>
-                    <input id="phone" type="text" value={form.phone} onChange={handleChange} />
+                    <input id="phone" type="text" value={form.phone} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
-                <div>
+                <div className="mb-4">
                     <label htmlFor="birthdate">生年月日</label>
-                    <input id="birthdate" type="date" value={form.birthdate} onChange={handleChange} />
+                    <input id="birthdate" type="date" value={form.birthdate} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
-                <div>
+                <div className="mb-4">
                     <label htmlFor="gender">性別を選択</label>
-                    <select id="gender" value={form.gender} onChange={handleChange} >
+                    <select id="gender" value={form.gender} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" >
                         <option value="">選択してください</option>
                         <option value="male">男性</option>
                         <option value="female">女性</option>
                         <option value="other">その他</option>
                     </select>
                 </div>
-                <div>
+                <div className="mb-4">
                     <label htmlFor="prefecture">居住地を選択</label>
-                    <select id="prefecture" value={form.prefecture} onChange={handleChange}>
+                    <select id="prefecture" value={form.prefecture} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="">選択してください</option>
                         {prefectures.map((prefecture) => (
                             <option key={prefecture} value={prefecture}>
@@ -103,16 +103,18 @@ export default function SignUp() {
                         ))}
                     </select>
                 </div>
-                <div>
+                <div className="mb-4">
                     <label htmlFor="password">パスワード</label>
-                    <input id="password" type="password" value={form.password} onChange={handleChange} />
+                    <input id="password" type="password" value={form.password} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
-                <div>
+                <div className="mb-4">
                     <label htmlFor="passwordConfirm">パスワード（確認用）</label>
-                    <input id="passwordConfirm" type="password" value={form.passwordConfirm} onChange={handleChange}/>
+                    <input id="passwordConfirm" type="password" value={form.passwordConfirm} onChange={handleChange} className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
                 </div>
-                <button type="submit">会員登録する（無料）</button>
+                <button type="submit" className="bg-[#518c3c] w-full text-white py-4 rounded-md font-semibold hover:bg-green-700 transition-colors">
+                    会員登録する（無料）
+                </button>
             </form>
-        </>
+        </div>
     )
 }
