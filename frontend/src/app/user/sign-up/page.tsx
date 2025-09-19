@@ -43,14 +43,23 @@ export default function SignUp() {
         }
 
         try {
-            const res = await api.post("users/", {
-                name: form.firstName + " " + form.lastName,
-                email: form.email,
-                phone: form.phone,
-                birthdate: form.birthdate,
-                gender: form.gender,
-                password: form.password
-            });
+            const res = await api.post("users/", 
+                {
+                    user: {
+                        name: form.firstName + " " + form.lastName,
+                        email: form.email,
+                        phone: form.phone,
+                        birthdate: form.birthdate,
+                        gender: form.gender,
+                        prefecture: form.prefecture,
+                        password: form.password,
+                        password_confirmation: form.passwordConfirm
+                    }
+                }, 
+                {
+                    withCredentials: true
+                }
+                );
             console.log("登録完了", res.data);
             alert("登録が完了しました");
         } catch (err) {
