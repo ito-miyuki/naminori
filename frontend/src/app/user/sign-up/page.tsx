@@ -57,7 +57,11 @@ export default function SignUp() {
                     }
                 }, 
                 {
-                    withCredentials: true
+                    withCredentials: true,
+                    headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                    }
                 }
                 );
             console.log("登録完了", res.data);

@@ -11,15 +11,30 @@ export default function SignIn() {
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
 
         if(!email || !password) {
+            alert("メールアドレスまたはパスワードが空欄です");
             return ;
         }
 
         try {
+            const res = await api.post(
+                "/users/sign_in", {
+                    user: {
+                        email,
+                        password
+                    }
+                },
+                {
+                    withCredentials: true
+                }
+            );
+            console.log("ログイン成功:", res.data);
             alert("ログインに成功しました");
+            // redirect to other page?
+
         } catch (err) {
             alert("ログインに失敗しました");
             console.error("ログインに失敗しました: ", err);
@@ -49,15 +64,16 @@ export default function SignIn() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
             />
+            <button
+                type="submit"
+                className="bg-[#518c3c] mt-4 text-white py-3 px-6 rounded-md font-semibold hover:bg-green-700 transition-colors"
+                >
+                ログイン
+            </button>
+            <p>次回から自動ログイン（開発中）</p>
         </form>
     <p>パスワードを忘れた方はこちら（開発中）</p>
-    <button
-        type="submit"
-        className="bg-[#518c3c] mt-4 text-white py-3 px-6 rounded-md font-semibold hover:bg-green-700 transition-colors"
-        >
-        ログイン
-    </button>
-    <p>次回から自動ログイン（開発中）</p>
+
     <hr />
     <p>また会員登録がお済みでない方</p>
     <Link
