@@ -3,11 +3,10 @@
 import api from "../../../../lib/api"
 import { useState } from "react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 export default function SignIn() {
-
-    
-
+    const router = useRouter()
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
 
@@ -33,8 +32,8 @@ export default function SignIn() {
             );
             console.log("ログイン成功:", res.data);
             alert("ログインに成功しました");
-            // redirect to other page?
-
+            // redirect to user dasgboard page
+            router.push("/user/dashboard");
         } catch (err) {
             alert("ログインに失敗しました");
             console.error("ログインに失敗しました: ", err);
