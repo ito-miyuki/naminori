@@ -32,6 +32,10 @@ export default function SignIn() {
             );
             console.log("ログイン成功:", res.data);
             alert("ログインに成功しました");
+
+            // save current user to local storage
+            localStorage.setItem("currentUser", JSON.stringify(res.data.user));
+
             // redirect to user dasgboard page
             router.push("/user/dashboard");
         } catch (err) {
