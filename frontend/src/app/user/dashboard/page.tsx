@@ -1,4 +1,5 @@
 'use client'
+import Link from "next/link";
 import { useEffect, useState } from "react"
 
 export default function Dashboard() {
@@ -17,6 +18,7 @@ export default function Dashboard() {
             <p>
                 こんにちは、{user?.name ?? "ゲスト"}さん
             </p>
+            <Link href="/user/setting">設定ページへ</Link>
         </div>
     )
 }
